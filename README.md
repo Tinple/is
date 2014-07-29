@@ -4,7 +4,7 @@ a tiny, smart utility to use in js&#39;s judgement
 
 ### Installation
 ````
-$ [sudo] npm install is
+$ [sudo] npm install is-judge
 ````
 
 Or
