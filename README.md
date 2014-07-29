@@ -1,4 +1,4 @@
-## is ![npm](https://badge.fury.io/js/is.png)
+## is-judge ![npm](https://badge.fury.io/js/is-judge.png)
 
 a tiny, smart utility to use in js&#39;s judgement
 
