@@ -1,0 +1,26 @@
+{
+  "name": "is",
+  "version": "0.0.0",
+  "description": "a tiny module to use in js's judgement",
+  "main": "is.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tinple/is"
+  },
+  "devDependencies": {
+    "should": "3.1.4",
+    "mocha": ">= 1.13.0 < 2"
+  },
+  "keywords": [
+    "is"
+  ],
+  "author": "Tinple",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tinple/is/issues"
+  },
+  "homepage": "https://github.com/Tinple/is"
+}
