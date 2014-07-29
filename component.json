@@ -1,0 +1,13 @@
+{
+  "name": "is",
+  "repo": "Tinple/is",
+  "description": "a tiny, smart utility to use in js&#39;s judgement",
+  "version": "0.0.1",
+  "keywords": [
+  	"is"
+  ],
+  "main": "is.js",
+  "scripts": [
+  	"is.js"
+  ]
+}

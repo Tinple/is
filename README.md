@@ -1,20 +1,51 @@
 ## is ![npm](https://badge.fury.io/js/is.png)
 
-a tiny module to use in js&#39;s judgement
+a tiny, smart utility to use in js&#39;s judgement
 
 ### Installation
 ````
 $ [sudo] npm install is
 ````
 
+Or
 
-### Example
-````javascript
+````
+$ component install Tinple/is
+````
+
+### Node
+````
 var is = require('is');
+````
+
+### Browser
+````
+<script src="./is.js">
 ````
 
 ### API
 
+Support five primitive data types
+```
+is.Null();
+is.Undefined();
+is.String();
+is.Boolean();
+is.Number();
+```
+
+And object type && Other Extensions
+```
+is.Object();
+is.Array();
+is.Function();
+is.Arguments();
+is.Element();
+is.Empty();
+is.Finite();
+// is.Equal support object, is.Equal({}, {}) return true
+is.Equal(); 
+```
 
 ### Contributing
 - Fork this repo
