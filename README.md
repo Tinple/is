@@ -15,7 +15,7 @@ $ component install Tinple/is
 
 ### Node
 ````
-var is = require('is');
+var is = require('is-judge');
 ````
 
 ### Browser
