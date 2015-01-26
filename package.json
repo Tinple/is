@@ -1,6 +1,6 @@
 {
   "name": "is-judge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a tiny, smart utility to use in js&#39;s judgement",
   "main": "is.js",
   "scripts": {
