@@ -43,6 +43,10 @@ is.Arguments();
 is.Element();
 is.Empty();
 is.Finite();
+is.Generator();
+is.GeneratorFunction();
+is.Node();
+is.Element();
 // is.Equal support object, is.Equal({}, {}) return true
 is.Equal(); 
 ```

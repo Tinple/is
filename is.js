@@ -22,6 +22,11 @@
 	 */
 	var isArray = Array.isArray;
 
+	/**
+	 * Generator Function
+	 */
+	var generator = function* () {};
+
 	function is () {
 		if (!(this instanceof is)) return new is;
 	}
@@ -31,39 +36,39 @@
 	 */
 	is.prototype.Null = function (obj) {
 		return obj === null;
-	}
+	};
 
 	is.prototype.Undefined = function (obj) {
 		return obj === void 0;
-	}
+	};
 
 	is.prototype.Boolean = function (obj) {
 		return obj === true || obj === false || toString.call(obj) == '[object Boolean]';
-	}
+	};
 
 	is.prototype.Number = function (obj) {
 	  	return !isNaN(parseFloat(obj)) && isFinite(obj);
-	}
+	};
 
 	is.prototype.String = function (obj) {
 		return toString.call(obj) == '[object String]';
-	}
+	};
 
 	/**
 	 * is Object
 	 */
 	is.prototype.Object = function (obj) {
 		return obj === Object(obj);
-	}
+	};
 
 	is.prototype.Array = isArray || function (obj) {
 		return toString.call(obj) == '[object Array]';
-	}
+	};
 
 	if (typeof (/./) !== 'function') {
 		is.prototype.Function = function (obj) {
 			return typeof obj === 'function';
-		}
+		};
 	}
 
 	/**
@@ -72,27 +77,52 @@
 	if (!is.prototype.Arguments) {
 		is.prototype.Arguments = function (obj) {
 			return !!(obj && hasOwnProperty.call(obj, 'callee'))
-		}
+		};
 	}
 
 	is.prototype.Element = function (obj) {
 		return !!(obj && obj.nodeType === 1);
-	}
+	};
 
 	is.prototype.Empty = function (obj) {
 		if (obj == null) return true;
 		if (is.prototype.Array(obj) || is.prototype.String(obj)) return obj.length === 0;
 		for (var key in obj) if (hasOwnProperty(obj, key)) return false;
 		return true;
-	}
+	};
 
 	is.prototype.Finite = function (obj) {
 		return isFinite(obj) && !isNaN(parseFloat(obj));
-	}
+	};
 
 	is.prototype.Equal = function (a, b) {
 		return eq(a, b, [], []);
-	}
+	};
+
+	is.prototype.Generator = function (obj) {
+		return typeof obj.next === 'function' && typeof obj.throw === 'function';
+	};
+
+	is.prototype.GeneratorFunction = function (obj) {
+		return obj && obj.constructor === generator.constructor;
+	};
+
+	/**
+	 * For browser
+	 */
+	is.prototype.Node = function (obj) {
+		return (
+			typeof Node === 'object' ? obj instanceof Node :
+			obj && typeof obj === 'object' && typeof obj.nodeType === 'number' && typeof obj.nodeName === 'string'
+		);
+	};
+
+	is.prototype.Element = function (obj) {
+		return (
+			typeof HTMLElement === 'object' ? obj instanceof HTMLElement :
+			obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string'
+		);
+	};
 
 	/*
 	 * underscore.js
