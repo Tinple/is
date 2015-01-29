@@ -3,7 +3,7 @@
         // CommonJS
         module.exports = definition();
     } else if (typeof window !== 'undefined') {
-        // browser
+        // Browser
         this[name] = definition();
     }
 })('is', function () {
@@ -32,7 +32,7 @@
 	}
 
 	/**
-	 * five primitive data types
+	 * Five Primitive Data Types
 	 */
 	is.prototype.Null = function (obj) {
 		return obj === null;
@@ -55,7 +55,7 @@
 	};
 
 	/**
-	 * is Object
+	 * Type check utilities
 	 */
 	is.prototype.Object = function (obj) {
 		return obj === Object(obj);
@@ -75,9 +75,6 @@
 		};
 	}
 
-	/**
-	 * Extension
-	 */
 	if (!is.prototype.Arguments) {
 		is.prototype.Arguments = function (obj) {
 			return !!(obj && hasOwnProperty.call(obj, 'callee'))
@@ -99,10 +96,6 @@
 		return isFinite(obj) && !isNaN(parseFloat(obj));
 	};
 
-	is.prototype.Equal = function (a, b) {
-		return eq(a, b, [], []);
-	};
-
 	is.prototype.Generator = function (obj) {
 		return typeof obj.next === 'function' && typeof obj.throw === 'function';
 	};
@@ -120,7 +113,7 @@
 	}
 
 	/**
-	 * For browser
+	 * For Browser
 	 */
 	is.prototype.Node = function (obj) {
 		return (
@@ -140,6 +133,125 @@
 		return obj != null && obj === obj.window;
 	};
 
+
+	/**
+	 * Environment Check Utilities
+	 */
+	if (typeof window !== 'undefined') {
+		var hasNavigator = 'navigator' in window;
+		var	vendor = hasNavigator && navigator.vendor || '';
+		var	userAgent = hasNavigator && navigator.userAgent || '';
+		var	appVersion = hasNavigator && navigator.appVersion || '';
+
+		/**
+		 * Browser Check 
+		 */
+		is.prototype.Chrome = function () {
+			return /chrome|chromium/i.test(userAgent) && /google inc/i.test(vendor);
+		};
+
+		is.prototype.Firefox = function () {
+			return /firefox/i.test(userAgent);
+		};
+
+		is.prototype.Opera = function () {
+			return /opr/i.test(userAgent);
+		};
+
+		is.prototype.Safari = function () {
+			return /safari/i.test(userAgent) && /apple computer/i.test(vendor);
+		};
+
+		is.prototype.ie = function (version) {
+			if (typeof version === 'undefined') return /msie/i.test(userAgent);
+			return new RegExp('msie ' + version, "i").test(userAgent);
+		};
+
+		/**
+		 * Mobile Device Check
+		 */
+		is.prototype.Mobile = function () {
+			return this.iphone() || this.ipod() || this.AndroidPhone() || this.BlackBerry || this.WindowsPhone;
+		};
+
+		is.prototype.Tablet = function () {
+			return this.ipad() || this.AndroidTablet() || this.WindowsTablet();
+		};
+
+		is.prototype.iphone = function () {
+			return /iphone/i.test(userAgent);
+		};
+
+		is.prototype.ipad = function () {
+			return /ipad/i.test(userAgent);
+		};
+
+		is.prototype.ipod = function () {
+			return /ipod/i.test(userAgent);
+		};
+
+		is.prototype.ios = function () {
+			return this.iphone() || this.ipad() || this.ipod();
+		};
+
+		is.prototype.Android = function () {
+			return /android/i.test(userAgent);
+		};
+
+		is.prototype.AndroidPhone = function () {
+			return this.Android() && /mobile/i.test(userAgent);
+		};
+
+		is.prototype.AndroidTablet = function () {
+			return this.Android() && /tablet/i.test(userAgent);
+		};
+
+		is.prototype.BlackBerry = function () {
+			return /blackberry/i.test(userAgent);
+		};
+
+		is.prototype.WindowsPhone = function () {
+			return this.Windows() && /phone/i.test(userAgent);
+		};
+
+		is.prototype.WindowsTablet = function () {
+			return this.Windows() && /touch/i.test(userAgent) && !this.WindowsPhone();
+		};
+
+		/**
+		 * Desktop Check
+		 */
+		is. prototype.Desktop = function () {
+			return !this.Mobile() && !this.Tablet();
+		};
+
+		is.prototype.Windows = function () {
+			return /win/i.test(appVersion);
+		};
+
+		is.prototype.Mac = function () {
+			return /mac/i.test(appVersion);
+		};
+
+		is.prototype.Linux = function () {
+			return /linux/i.test(appVersion);
+		};
+	}
+
+	/**
+	 * Useful Check Utilities
+	 */
+	is.prototype.inArray = function (val, arr) {
+		if (!this.Array(arr)) return false;
+		for (var i = 0; i <  arr.length; i++) {
+			if (arr[i] === val) return true;
+		}
+		return false;
+	};
+
+	is.prototype.Equal = function (a, b) {
+		return eq(a, b, [], []);
+	};
 	/*
 	 * underscore.js
 	 */
