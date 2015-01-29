@@ -65,6 +65,10 @@
 		return toString.call(obj) == '[object Array]';
 	};
 
+	is.prototype.regex = function (obj) {
+		return toString.call(obj) === '[object RegExp]';
+	};
+
 	if (typeof (/./) !== 'function') {
 		is.prototype.Function = function (obj) {
 			return typeof obj === 'function';
@@ -107,6 +111,14 @@
 		return obj && obj.constructor === generator.constructor;
 	};
 
+	is.prototype.ArrayLike = function (obj) {
+		var length = obj.length;
+		if (obj.nodeType === 1 && length) return true;
+		if (obj && typeof obj === 'object' && this.Finite(length) &&
+			length >= 0 && length === Math.floor(length) && length < 4294967296) return true;
+		return false;
+	}
+
 	/**
 	 * For browser
 	 */
@@ -122,6 +134,10 @@
 			typeof HTMLElement === 'object' ? obj instanceof HTMLElement :
 			obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string'
 		);
+	};
+
+	is.prototype.Window = function (obj) {
+		return obj != null && obj === obj.window;
 	};
 
 	/*

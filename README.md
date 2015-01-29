@@ -38,6 +38,8 @@ And object type && Other Extensions
 ```
 is.Object();
 is.Array();
+is.ArrayLike();
+is.RegExp()
 is.Function();
 is.Arguments();
 is.Element();
@@ -47,6 +49,7 @@ is.Generator();
 is.GeneratorFunction();
 is.Node();
 is.Element();
+is.Window();
 // is.Equal support object, is.Equal({}, {}) return true
 is.Equal(); 
 ```
