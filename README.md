@@ -27,31 +27,32 @@ var is = require('is-judge');
 
 Support five primitive data types
 ```
-is.Null();
-is.Undefined();
-is.String();
-is.Boolean();
-is.Number();
+is.Null(obj);
+is.Undefined(obj);
+is.String(obj);
+is.Boolean(obj);
+is.Number(obj);
 ```
 
 And object type && Other Extensions
 ```
-is.Object();
-is.Array();
-is.ArrayLike();
-is.RegExp()
-is.Function();
-is.Arguments();
-is.Element();
-is.Empty();
-is.Finite();
-is.Generator();
-is.GeneratorFunction();
-is.Node();
-is.Element();
-is.Window();
+is.Object(obj);
+is.Array(obj);
+// is.ArrayLike support node element
+is.ArrayLike(obj);
+is.RegExp(obj)
+is.Function(obj);
+is.Arguments(obj);
+is.Element(obj);
+is.Empty(obj);
+is.Finite(obj);
+is.Generator(obj);
+is.GeneratorFunction(obj);
+is.Node(obj);
+is.Element(obj);
+is.Window(obj);
 // is.Equal support object, is.Equal({}, {}) return true
-is.Equal(); 
+is.Equal(a, b); 
 ```
 
 ### Contributing
