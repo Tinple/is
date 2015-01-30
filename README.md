@@ -34,16 +34,14 @@ is.Boolean(obj);
 is.Number(obj);
 ```
 
-And object type && Other Extensions
+Type Check Utility
 ```
 is.Object(obj);
 is.Array(obj);
-// is.ArrayLike support node element
-is.ArrayLike(obj);
+is.ArrayLike(obj); // is.ArrayLike support node element
 is.RegExp(obj)
 is.Function(obj);
 is.Arguments(obj);
-is.Element(obj);
 is.Empty(obj);
 is.Finite(obj);
 is.Generator(obj);
@@ -51,9 +49,39 @@ is.GeneratorFunction(obj);
 is.Node(obj);
 is.Element(obj);
 is.Window(obj);
-// is.Equal support object, is.Equal({}, {}) return true
-is.Equal(a, b); 
 ```
+
+Environment Check Utility
+```
+is.Chrome();
+is.Firefox();
+is.Opera();
+is.Safari();
+is.ie(v); // support specific ie version check
+is.Mobile();
+is.Tablet();
+is.iphone();
+is.ipad();
+is.ipod();
+is.ios();
+is.Android();
+is.AndroidPhone();
+is.AndroidTablet();
+is.BlackBerry();
+is.WindowsPhone();
+is.WindowsTablet();
+is.Desktop();
+is.Windows();
+is.Mac();
+is.Linux();
+```
+
+Other Useful Check Utility
+```
+is.inArray(val, arr);
+is.Equal(a, b); //support object, is.Equal({}, {}) return true
+```
+ 
 
 ### Contributing
 - Fork this repo
